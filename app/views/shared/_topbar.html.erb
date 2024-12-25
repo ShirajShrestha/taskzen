@@ -1,0 +1,16 @@
+<div class="border border-b-gray-500 p-4 flex items-center justify-between bg-lightbg">
+    <div class="text-xl font-bold">Tasks</div>
+    <div class="flex space-x-4 mr-2 gap-2 items-center">
+        <div><i class="fa-regular fa-bell text-xl"></i></div>
+        <div class="w-10 h-10 rounded-full bg-gray-300 text-white flex items-center justify-center font-bold shadow-md">
+            <%= current_user.email.split('@').first[0].capitalize %>
+        </div>
+        <div>
+            <%= link_to " + Add new task", new_task_path, class: "bg-black text-white py-2 px-4 rounded-md" %>
+        </div>
+    </div>
+</div>
+<div class="flex items-center text-gray-400 border border-b-gray-400 p-2">
+    <i class="fa-solid fa-magnifying-glass "></i>
+    <input type="text" class="outline-none border-none w-full p-2 bg-primarybg text-primary" placeholder="Search for something..">
+</div>

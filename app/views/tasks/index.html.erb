@@ -1,0 +1,32 @@
+<%= render "shared/topbar"%>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+    <!-- Todo Column -->
+    <div class=" rounded-lg p-4">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #EBE5FF;">Todo</h2>
+        <div class="space-y-4">
+            <% @tasks.where(status: "Pending").each do |task| %>
+            <%= render partial: "card", locals: {task: task} %>
+            <% end %>
+        </div>
+    </div>
+
+    <!-- Ongoing Column -->
+    <div class="rounded-lg p-4">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #DFF5F8;">Ongoing</h2>
+        <div class="space-y-4">
+            <% @tasks.where(status: "In Progress").each do |task| %>
+            <%= render partial: "card", locals: {task: task} %>
+            <% end %>
+        </div>
+    </div>
+
+    <!-- Completed Column -->
+    <div class="rounded-lg p-4">
+        <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #E3F7DA;">Completed</h2>
+        <div class="space-y-4">
+            <% @tasks.where(status: "Completed").each do |task| %>
+            <%= render partial: "card", locals: {task: task} %>
+            <% end %>
+        </div>
+    </div>
+</div>

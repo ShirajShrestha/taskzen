@@ -1,0 +1,4 @@
+<turbo-frame id="task_<%= task.id%> ">
+    <p><%= task.title%> - <%= task.completed ? "Completed" : "Pending"%> </p>
+    <%= link_to "Edit", edit_task_path(task)%> | <%= link_to "Delete", task_path(task), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+</turbo-frame>

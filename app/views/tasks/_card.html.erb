@@ -1,0 +1,13 @@
+<%= link_to task_path(task), class: "block" do %>
+<div class="p-4 bg-white rounded-lg shadow-sm border border-gray-200">
+    <h3 class="font-bold text-gray-700 text-xl"><%= task.title %></h3>
+    <div class="flex items-center justify-between mt-2">
+        <p class="text-sm px-2 py-1 rounded-md <%= priority_color_class(task) %>">
+            <i class="fa-regular fa-flag mr-1"></i> <%= task.priority %>
+        </p>
+        <p class="text-sm text-primary bg-darkbg px-2 py-1 rounded-md">
+            <i class="fa-regular fa-clock mr-1"></i> <%= task.due_date %>
+        </p>
+    </div>
+</div>
+<%end%>

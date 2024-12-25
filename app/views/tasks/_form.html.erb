@@ -1,0 +1,55 @@
+<div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+    <div class="relative w-11/12 max-w-md bg-white shadow-lg rounded-lg p-6 space-y-6">
+        <!-- Back Button -->
+        <div class="absolute top-4 left-4">
+            <%= link_to root_path, class: "text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center" do %>
+            <i class="fa-solid fa-chevron-left mr-2"></i>
+            Back
+            <% end %>
+        </div>
+
+
+        <!-- Form -->
+        <%= form_with(model: @task, local: true, class: "space-y-4") do |f| %>
+        <% if @task.errors.any? %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+            <h2 class="font-bold mb-2"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+            <ul class="list-disc pl-5">
+                <% @task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+
+        <div>
+            <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.text_field :title, class: "mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+
+        <div>
+            <%= f.label :description, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.text_area :description, rows: 4, class: "mt-1 p-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 resize-none" %>
+        </div>
+
+        <div>
+            <%= f.label :status, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.select :status, ["Pending", "In Progress", "Completed"], {}, class: "mt-1 block w-full border p-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+
+        <div>
+            <%= f.label :priority, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.select :priority, ["Low", "Medium", "High"], {}, class: "mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+
+        <div>
+            <%= f.label :due_date, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.date_field :due_date, class: "mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+
+        <div>
+            <%= f.submit "Save Task", class: "w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700" %>
+        </div>
+        <% end %>
+    </div>
+</div>

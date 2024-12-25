@@ -1,12 +1,38 @@
-<%
-=begin%>
-<% if user_signed_in? %>
-<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% else %>
-<%= link_to "Login", new_user_session_path %> |
-<%= link_to "Sign Up", new_user_registration_path %>
-<% end %>
-<%
-=end%>
+<div class="flex h-screen">
+    <div class="w-64 bg-primarybg text-primary flex flex-col shadow-lg border border-r">
+        <div class="p-4 text-2xl font-bold text-center mb-4">
+            TaskZen
+        </div>
 
-<p>Navbar coming soon</p>
+        <!-- Navigation Links -->
+        <nav class="mt-6 space-y-2 font-semibold p-4 relative h-screen">
+            <% if user_signed_in? %>
+            <%= link_to "+ Add new task", new_task_path, class: "flex w-full  font-semibold bg-accent item-center text-center my-4 p-2 rounded-md" %>
+            <%= link_to root_path, class: "block py-2 px-4 hover:bg-lightbg" do %>
+            <i class="fa-solid fa-house mr-2"></i> Home
+            <% end %>
+            <%= link_to tasks_path, class: "block py-2 px-4 shadow:lg hover:bg-lightbg" do%>
+            <i class="fa-solid fa-clipboard-list mr-2"></i>Tasks
+            <%end%>
+            <%= link_to edit_user_registration_path, class: "block py-2 px-4 hover:bg-lightbg" do%>
+            <i class="fa-regular fa-id-badge mr-2"></i>Profile
+            <%end%>
+            <%= button_to destroy_user_session_path, method: :delete, class: "absolute bottom-10 py-2 px-4 hover:bg-lightbg " do%>
+            <i class="fa-solid fa-right-from-bracket mr-2"></i> Log out
+            <%end%>
+            <% else %>
+            <%= link_to new_user_session_path, class: "block py-2 px-4 hover:bg-lightbg" do%>
+            <i class="fa-solid fa-right-to-bracket mr-2"></i>Log in
+            <%end%>
+            <%= link_to new_user_registration_path, class: "block py-2 px-4 hover:bg-lightbg" do %>
+            <i class="fa-solid fa-user-plus mr-2"></i>Sign up
+            <%end%>
+            <% end %>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 bg-primarybg">
+        <%= yield %>
+    </div>
+</div>
