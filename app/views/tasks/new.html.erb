@@ -1,2 +1,4 @@
 <%= render "shared/topbar"%>
+<%= turbo_frame_tag "task_form" do %>
 <%= render "form", task: @task %>
+<%end%>

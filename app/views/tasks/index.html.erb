@@ -1,32 +1,44 @@
 <%= render "shared/topbar"%>
+<%= turbo_frame_tag "task_form" do %>
+<!-- Task Form -->
+<%end%>
+<%= turbo_frame_tag "task_show" do %>
+<!-- Task details -->
+<% end %>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
     <!-- Todo Column -->
-    <div class=" rounded-lg p-4">
+    <div class=" rounded-lg p-4 max-h-[75vh] overflow-y-auto overflow-y-auto [&::-webkit-scrollbar]:w-0">
         <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #EBE5FF;">Todo</h2>
         <div class="space-y-4">
+            <%= turbo_frame_tag "pending_tasks" do %>
             <% @tasks.where(status: "Pending").each do |task| %>
             <%= render partial: "card", locals: {task: task} %>
+            <%end%>
             <% end %>
         </div>
     </div>
 
     <!-- Ongoing Column -->
-    <div class="rounded-lg p-4">
+    <div class="rounded-lg p-4  max-h-[75vh] overflow-y-auto overflow-y-auto [&::-webkit-scrollbar]:w-0">
         <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #DFF5F8;">Ongoing</h2>
         <div class="space-y-4">
+            <%= turbo_frame_tag "in_progress_tasks" do %>
             <% @tasks.where(status: "In Progress").each do |task| %>
             <%= render partial: "card", locals: {task: task} %>
             <% end %>
+            <%end%>
         </div>
     </div>
 
     <!-- Completed Column -->
-    <div class="rounded-lg p-4">
+    <div class="rounded-lg p-4  max-h-[75vh] overflow-y-auto overflow-y-auto [&::-webkit-scrollbar]:w-0">
         <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #E3F7DA;">Completed</h2>
         <div class="space-y-4">
+            <%= turbo_frame_tag "completed_tasks" do %>
             <% @tasks.where(status: "Completed").each do |task| %>
             <%= render partial: "card", locals: {task: task} %>
             <% end %>
+            <%end%>
         </div>
     </div>
 </div>

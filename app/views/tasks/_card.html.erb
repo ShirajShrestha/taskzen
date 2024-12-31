@@ -1,4 +1,4 @@
-<%= link_to task_path(task), class: "block" do %>
+<%= link_to task_path(task), class: "block", id: "task_#{task.id}", data: { turbo_frame: "task_show" } do %>
 <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-200">
     <h3 class="font-bold text-gray-700 text-xl"><%= task.title %></h3>
     <div class="flex items-center justify-between mt-2">

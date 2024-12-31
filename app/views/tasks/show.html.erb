@@ -1,33 +1,3 @@
-<%= render "shared/topbar" %>
-<div class="p-6 my-2 max-w-3xl mx-auto bg-gray-50 rounded-lg shadow-md">
-    <div class="flex items-center justify-between p-2">
-        <%= link_to root_path, class: "text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center" do %>
-        <i class="fa-solid fa-chevron-left mr-2"></i>
-        Back
-        <% end %>
-        <div class="flex items-center justify-center gap-4 mr-4">
-            <%= link_to edit_task_path, class: "hover:text-blue-400" do %>
-            <i class="fa-regular fa-pen-to-square"></i>
-            <%end%>
-            <%= button_to task_path, method: :delete, class: "hover:text-red-400" do%>
-            <i class="fa-regular fa-trash-can"></i>
-            <%end%>
-        </div>
-    </div>
-    <h1 class="text-2xl font-bold text-gray-800 mb-4 "><%= @task.title %></h1>
-    <p>
-        <strong>Description:</strong>
-    </p>
-    <p class="text-gray-600 mb-4 p-1">
-        <%= @task.description %>
-    </p>
-    <p class="text-sm px-2 py-1 rounded-md <%= priority_color_class(@task) %> inline-block">
-        <i class="fa-regular fa-flag mr-1"></i> <%= @task.priority %>
-    </p>
-    <p class="text-sm text-primary bg-darkbg px-2 py-1 rounded-md mt-4 inline-block">
-        <i class="fa-regular fa-clock mr-1"></i> <%= @task.due_date %>
-    </p>
-    <p class="text-sm text-gray-500 mt-4">
-        <strong>Status:</strong> <%= @task.status %>
-    </p>
-</div>
+<%= turbo_frame_tag "task_show" do %>
+<%= render "tasks/show" %>
+<% end %>

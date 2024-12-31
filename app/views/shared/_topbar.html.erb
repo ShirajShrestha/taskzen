@@ -6,7 +6,7 @@
             <%= current_user.email.split('@').first[0].capitalize %>
         </div>
         <div>
-            <%= link_to " + Add new task", new_task_path, class: "bg-black text-white py-2 px-4 rounded-md" %>
+            <%= link_to " + Add new task", new_task_path, data: { turbo_frame: "task_form" }, class: "bg-black text-white py-2 px-4 rounded-md" %>
         </div>
     </div>
 </div>

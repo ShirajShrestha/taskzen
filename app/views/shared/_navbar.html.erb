@@ -7,7 +7,7 @@
         <!-- Navigation Links -->
         <nav class="mt-6 space-y-2 font-semibold p-4 relative h-screen">
             <% if user_signed_in? %>
-            <%= link_to "+ Add new task", new_task_path, class: "flex w-full  font-semibold bg-accent item-center text-center my-4 p-2 rounded-md" %>
+            <%= link_to "+ Add new task", new_task_path,  data: { turbo_frame: "task_form" }, class: "flex w-full  font-semibold bg-accent item-center text-center my-4 p-2 rounded-md" %>
             <%= link_to root_path, class: "block py-2 px-4 hover:bg-lightbg" do %>
             <i class="fa-solid fa-house mr-2"></i> Home
             <% end %>
