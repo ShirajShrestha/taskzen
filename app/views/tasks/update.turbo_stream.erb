@@ -1,0 +1,8 @@
+<%= turbo_stream.replace(
+  "task_#{@task.id}",
+  partial: "tasks/card", 
+  locals: { task: @task }
+) %>
+
+<%= turbo_stream.update "task_show", "" %>
+<%= turbo_stream.update "task_form", "" %>

@@ -1,4 +1,5 @@
-<div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+<%= turbo_frame_tag "task_show" do %>
+<div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center ">
     <div class="p-6 my-2 w-11/12 max-w-md bg-gray-50 rounded-lg shadow-md">
         <div class="flex items-center justify-between p-2">
             <%= link_to root_path, class: "text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center" do %>
@@ -6,10 +7,10 @@
             Back
             <% end %>
             <div class="flex items-center justify-center gap-4 mr-4">
-                <%= link_to edit_task_path, class: "hover:text-blue-400", data: { turbo_frame: "task_#{@task.id}" } do %>
+                <%= link_to edit_task_path, class: "hover:text-blue-400", data: { turbo_frame: "task_form" } do %>
                 <i class="fa-regular fa-pen-to-square"></i>
                 <%end%>
-                <%= button_to task_path, method: :delete, class: "hover:text-red-400" do%>
+                <%= button_to task_path(@task), method: :delete, data: { turbo_confirm: "Are you sure?", turbo_frame: "task_show" }, class: "hover:text-red-400" do%>
                 <i class="fa-regular fa-trash-can"></i>
                 <%end%>
             </div>
@@ -32,3 +33,4 @@
         </p>
     </div>
 </div>
+<%end%>

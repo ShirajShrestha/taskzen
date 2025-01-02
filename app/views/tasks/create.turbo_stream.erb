@@ -1,0 +1,8 @@
+<%= turbo_stream.prepend(
+  "#{@task.status.parameterize.underscore}_tasks", 
+  partial: "tasks/card", 
+  locals: { task: @task }
+) %>
+
+<%= turbo_stream.update "task_form", "" %>
+

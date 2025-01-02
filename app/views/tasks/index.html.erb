@@ -1,10 +1,13 @@
 <%= render "shared/topbar"%>
+
 <%= turbo_frame_tag "task_form" do %>
 <!-- Task Form -->
 <%end%>
+
 <%= turbo_frame_tag "task_show" do %>
 <!-- Task details -->
 <% end %>
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
     <!-- Todo Column -->
     <div class=" rounded-lg p-4 max-h-[75vh] overflow-y-auto overflow-y-auto [&::-webkit-scrollbar]:w-0">
