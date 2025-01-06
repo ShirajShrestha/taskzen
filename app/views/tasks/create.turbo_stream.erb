@@ -1,6 +1,6 @@
 <%= turbo_stream.prepend(
   "#{@task.status.parameterize.underscore}_tasks", 
-  partial: "tasks/card", 
+  partial: "tasks/task", 
   locals: { task: @task }
 ) %>
 

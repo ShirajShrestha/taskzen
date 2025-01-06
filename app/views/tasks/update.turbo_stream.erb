@@ -1,6 +1,6 @@
 <%= turbo_stream.replace(
   "task_#{@task.id}",
-  partial: "tasks/card", 
+  partial: "tasks/task", 
   locals: { task: @task }
 ) %>
 

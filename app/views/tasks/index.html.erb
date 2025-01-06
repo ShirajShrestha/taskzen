@@ -12,10 +12,11 @@
     <!-- Todo Column -->
     <div class=" rounded-lg p-4 max-h-[75vh] overflow-y-auto overflow-y-auto [&::-webkit-scrollbar]:w-0">
         <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #EBE5FF;">Todo</h2>
+        <%= turbo_stream_from "pending_tasks" %>
         <div class="space-y-4">
             <%= turbo_frame_tag "pending_tasks" do %>
             <% @tasks.where(status: "Pending").each do |task| %>
-            <%= render partial: "card", locals: {task: task} %>
+            <%= render partial: "tasks/task", locals: {task: task} %>
             <%end%>
             <% end %>
         </div>
@@ -24,10 +25,11 @@
     <!-- Ongoing Column -->
     <div class="rounded-lg p-4  max-h-[75vh] overflow-y-auto overflow-y-auto [&::-webkit-scrollbar]:w-0">
         <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #DFF5F8;">Ongoing</h2>
+        <%=turbo_stream_from "in_progress_tasks" %>
         <div class="space-y-4">
             <%= turbo_frame_tag "in_progress_tasks" do %>
             <% @tasks.where(status: "In Progress").each do |task| %>
-            <%= render partial: "card", locals: {task: task} %>
+            <%= render partial: "tasks/task", locals: {task: task} %>
             <% end %>
             <%end%>
         </div>
@@ -36,10 +38,11 @@
     <!-- Completed Column -->
     <div class="rounded-lg p-4  max-h-[75vh] overflow-y-auto overflow-y-auto [&::-webkit-scrollbar]:w-0">
         <h2 class="text-xl font-bold text-gray-800 mb-4 p-2 rounded-lg" style="background-color: #E3F7DA;">Completed</h2>
+        <%= turbo_stream_from "completed_tasks" %>
         <div class="space-y-4">
             <%= turbo_frame_tag "completed_tasks" do %>
             <% @tasks.where(status: "Completed").each do |task| %>
-            <%= render partial: "card", locals: {task: task} %>
+            <%= render partial: "tasks/task", locals: {task: task} %>
             <% end %>
             <%end%>
         </div>
